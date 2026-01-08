@@ -1,0 +1,19 @@
+<!-- Esto va en un archivo HTML aparte -->
+<form id="miForm">
+  <input name="nombre">
+  <button>Enviar a N8N</button>
+</form>
+
+<script>
+// Este código APUNTA a tu N8N en Render
+fetch('https://tu-n8n.onrender.com/webhook/form', {
+  method: 'POST',
+  body: JSON.stringify({nombre: 'Juan'})
+})
+.then(r => r.json())
+.then(respuesta => {
+  // Muestra respuesta EN ESTA MISMA PÁGINA
+  document.getElementById('miForm').innerHTML = 
+    `<h3>${respuesta.mensaje}</h3>`;
+});
+</script>
